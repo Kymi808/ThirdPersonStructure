@@ -9,6 +9,8 @@
 #include "ThirdPersonStructureCharacter.generated.h"
 
 class UInventoryComponent;
+class USanityCorruptionComponent;
+class USkillTreeComponent;
 class AThirdPersonStructureHUD;
 
 USTRUCT()
@@ -99,6 +101,12 @@ public:
 
 	FORCEINLINE UInventoryComponent* GetInventory() const {return PlayerInventory;};
 
+	UFUNCTION(BlueprintPure, Category = "Character")
+	FORCEINLINE USanityCorruptionComponent* GetSanityCorruption() const { return SanityCorruptionComp; };
+
+	UFUNCTION(BlueprintPure, Category = "Character")
+	FORCEINLINE USkillTreeComponent* GetSkillTree() const { return SkillTreeComp; };
+
 	void UpdateInteractionWidget() const;
 	
 protected:
@@ -110,6 +118,12 @@ protected:
 
 	UPROPERTY(VisibleAnywhere, Category = "Character | Inventory")
 	UInventoryComponent* PlayerInventory;
+
+	UPROPERTY(VisibleAnywhere, Category = "Character | Sanity")
+	USanityCorruptionComponent* SanityCorruptionComp;
+
+	UPROPERTY(VisibleAnywhere, Category = "Character | Skills")
+	USkillTreeComponent* SkillTreeComp;
 
 	float InteractionCheckFrequency;
 

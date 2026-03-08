@@ -12,6 +12,8 @@
 #include "InputActionValue.h"
 #include "DrawDebugHelpers.h"
 #include "Components/InventoryComponent.h"
+#include "Components/SanityCorruptionComponent.h"
+#include "Components/SkillTreeComponent.h"
 #include "UserInterface/ThirdPersonStructureHUD.h"
 
 DEFINE_LOG_CATEGORY(LogTemplateCharacter);
@@ -52,6 +54,9 @@ AThirdPersonStructureCharacter::AThirdPersonStructureCharacter()
 	PlayerInventory = CreateDefaultSubobject<UInventoryComponent>(TEXT("Player Inventory"));
 	PlayerInventory->SetSlotsCapacity(27);
 	PlayerInventory->SetWeightCapacity(270.0f);
+
+	SanityCorruptionComp = CreateDefaultSubobject<USanityCorruptionComponent>(TEXT("SanityCorruption"));
+	SkillTreeComp = CreateDefaultSubobject<USkillTreeComponent>(TEXT("SkillTree"));
 
 	// Create a follow camera
 	FollowCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("FollowCamera"));
